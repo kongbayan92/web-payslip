@@ -18,7 +18,7 @@ export default function WidgetNavbar() {
               </NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Transactions" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Payroll</NavDropdown.Item>
+              <NavDropdown.Item href="/salaries">Salaries</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
