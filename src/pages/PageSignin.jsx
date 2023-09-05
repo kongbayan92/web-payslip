@@ -32,8 +32,6 @@ export default function PageSignin() {
     } catch (error) {
       alert(error);
     }
-    
-    
   }
 
   const onHandleChange = (e) => {
