@@ -2,8 +2,8 @@ import { useEffect, useState } from "react"
 import configApi from "../config.api";
 import { Col, Container, Row, Table } from "react-bootstrap";
 import WidgetUserAdd from "../components/WidgetUserAdd";
-import WidgetUserDetail from "../components/WidgetUserDetail";
 import WidgetNavbar from "../components/WidgetNavbar";
+import WidgetUserEdit from "../components/WidgetUserEdit";
 
 export default function PageUsers() {
   const [users, setUsers] = useState([]);
@@ -21,7 +21,7 @@ export default function PageUsers() {
       if (!response.ok) {
         throw new Error(`Error! status: ${response.status}`);
       }
-                                                          
+                                                    
       const content = await response.json();
       setUsers(content);
     } catch (error) {
@@ -80,7 +80,7 @@ export default function PageUsers() {
                     <td>{user.lastName}</td>
                     <td>{user.email}</td>
                     <td>
-                      <WidgetUserDetail userId={user._id} eventListener={userDetailListener} />
+                      <WidgetUserEdit userId={user._id} eventListener={userDetailListener} />
                     </td>
                   </tr>
                 ))}

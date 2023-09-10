@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import configApi from '../config.api';
 
-export default function WidgetUserDetail({ userId, eventListener }) {
+export default function WidgetUserEdit({ userId, eventListener }) {
   const [user, setUser] = useState(null);
   const [show, setShow] = useState(false);
 

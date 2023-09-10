@@ -11,7 +11,6 @@ export default function PageSignin() {
   
   const onSignin = async () => {
     try {
-      
       const response = await fetch(`${configApi.BASE_URL}/users/signin`, {
         method: 'POST',
         headers: {
@@ -22,7 +21,6 @@ export default function PageSignin() {
       });
 
       if (!response.ok) {
-        console.log(response);
         throw new Error(`Error! status: ${response.status}`);
       }
       

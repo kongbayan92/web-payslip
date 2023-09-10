@@ -4,6 +4,8 @@ import WidgetNavbar from "../components/WidgetNavbar";
 import { Col, Container, Row, Table } from "react-bootstrap";
 import WidgetSalaryAdd from "../components/WidgetSalaryAdd";
 
+import WidgetSalaryEdit from "../components/WidgetSalaryEdit";
+
 const PageSalaries = () => {
   const [salaries, setSalaries] = useState([]);
 
@@ -33,6 +35,14 @@ const PageSalaries = () => {
     return () => {};
   }, []);
 
+  const salaryAddListener = (e) => {
+    if (e.detail.status) {
+      get();
+    } else {
+      alert(e.detail.error)
+    }
+  }
+
   return (
     <>
       <WidgetNavbar />
@@ -40,7 +50,7 @@ const PageSalaries = () => {
         <Row>
           <Col className="d-flex justify-content-between align-items-center">
             <h3>Salaries</h3>
-            <WidgetSalaryAdd eventListener={() => {}} />
+            <WidgetSalaryAdd eventListener={salaryAddListener} />
           </Col>
         </Row>
       </Container>
@@ -67,7 +77,7 @@ const PageSalaries = () => {
                     <td>{salary.totalDeduction}</td>
                     <td>{salary.totalSalary}</td>
                     <td>
-
+                      <WidgetSalaryEdit salaryId={salary._id} />
                     </td>
                   </tr>
                 ))}

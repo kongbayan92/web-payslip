@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { Card, Table } from "react-bootstrap";
+import { Card, Col, Row, Table } from "react-bootstrap";
 import configApi from "../config.api";
 import EmployeeModel from "../models/EmployeeModel";
 
@@ -43,7 +43,7 @@ const WidgetEmployeeChoice = ({ eventListener }) => {
 
   return (
     <>
-      <Card className="mt-3">
+      <Card >
         {!employee._id && (
           <Card.Body>
             <Card.Title>Employee</Card.Title>
@@ -58,54 +58,64 @@ const WidgetEmployeeChoice = ({ eventListener }) => {
             <Card.Body>
               <Card.Title>{employee.firstName} {employee.lastName}</Card.Title>
             </Card.Body>
-            <Table bordered>
-              <tbody>
-                <tr>
-                  <th>Email</th>
-                  <td>{employee.email}</td>
-                </tr>
-                <tr>
-                  <th>Department</th>
-                  <td>{employee.department}</td>
-                </tr>
-                <tr>
-                  <th>Basic Salary</th>
-                  <td>{employee.basicSalary}</td>
-                </tr>
-              </tbody>
-            </Table>
-            <Table striped bordered>
-              <thead>
-                <tr>
-                  <th>Allowance</th>
-                  <th>Value</th>
-                </tr>
-              </thead>
-              <tbody>
-                {employee.allowances.length > 0 && employee.allowances.map((allowance, index) => (
-                  <tr key={index}>
-                    <td>{allowance.name}</td>
-                    <td>{allowance.total}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
-            <Table striped bordered>
-                <thead>
-                  <tr>
-                    <th>Deduction</th>
-                    <th>Value</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {employee.deductions.length > 0 && employee.deductions.map((deduction, index) => (
-                    <tr key={index}>
-                      <td>{deduction.name}</td>
-                      <td>{deduction.total}</td>
+            <Row>
+              <Col>
+                <Table>
+                  <tbody>
+                    <tr>
+                      <th>Email</th>
+                      <td>{employee.email}</td>
                     </tr>
-                  ))}
-                </tbody>
-              </Table>
+                    <tr>
+                      <th>Department</th>
+                      <td>{employee.department}</td>
+                    </tr>
+                    <tr>
+                      <th>Basic Salary</th>
+                      <td>{employee.basicSalary}</td>
+                    </tr>
+                  </tbody>
+                </Table>
+              </Col>
+            </Row>
+            <Row>
+            <Col>
+                <Table striped>
+                  <thead>
+                    <tr>
+                      <th>Allowance</th>
+                      <th>Value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {employee.allowances.length > 0 && employee.allowances.map((allowance, index) => (
+                      <tr key={index}>
+                        <td>{allowance.name}</td>
+                        <td>{allowance.total}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </Table>
+              </Col>
+              <Col>
+                <Table striped>
+                  <thead>
+                    <tr>
+                      <th>Deduction</th>
+                      <th>Value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {employee.deductions.length > 0 && employee.deductions.map((deduction, index) => (
+                      <tr key={index}>
+                        <td>{deduction.name}</td>
+                        <td>{deduction.total}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </Table>
+              </Col>
+            </Row>
             <Card.Body>
               <Card.Text>To add employee again, click this button below</Card.Text>
               <Button variant="primary" onClick={handleShow} size="sm">

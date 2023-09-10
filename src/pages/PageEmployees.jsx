@@ -3,7 +3,7 @@ import WidgetNavbar from "../components/WidgetNavbar";
 import { Col, Container, Row, Table } from "react-bootstrap";
 import configApi from "../config.api";
 import WidgetEmployeeAdd from "../components/WidgetEmployeeAdd";
-import WidgetEmployeeDetail from "../components/WidgetEmployeeDetail";
+import WidgetEmployeeEdit from "../components/WidgetEmployeeEdit";
 
 const PageEmployees = () => {
   const [employees, setEmployees] = useState([]);
@@ -84,7 +84,7 @@ const PageEmployees = () => {
                     <td>{employee.department}</td>
                     <td>{employee.basicSalary.toLocaleString('en-US', {style: 'currency', currency: 'IDR'})}</td>
                     <td>
-                      <WidgetEmployeeDetail eventListener={employeeDetailListener} employeeId={employee._id} />
+                      <WidgetEmployeeEdit eventListener={employeeDetailListener} employeeId={employee._id} />
                     </td>
                   </tr>
                 ))}

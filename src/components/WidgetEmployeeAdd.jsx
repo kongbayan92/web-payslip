@@ -5,21 +5,10 @@ import Form from 'react-bootstrap/Form';
 import configApi from '../config.api';
 import { Col, InputGroup, Row, Table } from "react-bootstrap";
 import { FaTrash } from 'react-icons/fa'
+import EmployeeModel from "../models/EmployeeModel";
+import AllowanceModel from "../models/AllowanceModel";
+import DeductionModel from "../models/DeductionModel";
 
-const employeeInit = {
-  email: "",
-  firstName: "",
-  lastName: "",
-  department: "",
-  basicSalary: 0,
-  allowances: [],
-  deductions: []
-}
-
-const allowanceAndDeductionInit = {
-  name: "",
-  total: 0
-}
 
 const WidgetEmployeeAdd = ({ eventListener }) => {
   const [show, setShow] = useState(false);
@@ -27,11 +16,11 @@ const WidgetEmployeeAdd = ({ eventListener }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [employee, setEmployee] = useState(employeeInit)
+  const [employee, setEmployee] = useState(EmployeeModel)
 
-  const [allowance, setAllowance] = useState(allowanceAndDeductionInit);
+  const [allowance, setAllowance] = useState(AllowanceModel);
 
-  const [deduction, setDeduction] = useState(allowanceAndDeductionInit)
+  const [deduction, setDeduction] = useState(DeductionModel)
 
   const create = async () => {
     try { 
@@ -50,7 +39,7 @@ const WidgetEmployeeAdd = ({ eventListener }) => {
       }
       
       const content = await response.json();
-      setEmployee(employeeInit)
+      setEmployee(EmployeeModel)
       handleClose();
       eventListener({detail: { content, status: true }})
     } catch (error) {
